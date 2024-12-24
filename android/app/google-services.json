@@ -1,0 +1,106 @@
+{
+  "project_info": {
+    "project_number": "810131365389",
+    "firebase_url": "https://cloud-message-test-1d41b-default-rtdb.asia-southeast1.firebasedatabase.app",
+    "project_id": "cloud-message-test-1d41b",
+    "storage_bucket": "cloud-message-test-1d41b.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:810131365389:android:c682a5c39f711ef8e77f44",
+        "android_client_info": {
+          "package_name": "com.example.health_mana"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAXjpUAtFNe7h1Ed92ZPUP50SNchyXLEeQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:810131365389:android:9ff7ef5a8617c6bfe77f44",
+        "android_client_info": {
+          "package_name": "com.example.health_management.cloud_message"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAXjpUAtFNe7h1Ed92ZPUP50SNchyXLEeQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:810131365389:android:c68ba9159afb083ae77f44",
+        "android_client_info": {
+          "package_name": "com.example.health_management.staging"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAXjpUAtFNe7h1Ed92ZPUP50SNchyXLEeQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:810131365389:android:2cb204926734553de77f44",
+        "android_client_info": {
+          "package_name": "com.example.test_push_noti_fcm"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAXjpUAtFNe7h1Ed92ZPUP50SNchyXLEeQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:810131365389:android:e7f2ae15f0c80c77e77f44",
+        "android_client_info": {
+          "package_name": "com.normdevstorm.sus_action_detector"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAXjpUAtFNe7h1Ed92ZPUP50SNchyXLEeQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

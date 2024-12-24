@@ -1,0 +1,30 @@
+{
+  "en_US": {
+    "btn_submit": "Submit",
+    "lbl_username": "Username",
+    "lbl_password": "Password",
+    "btn_cancel": "Cancel",
+    "msg_success": "Operation successful",
+    "msg_error": "An error occurred",
+    "lbl_email": "Email Address",
+    "btn_continue": "Continue",
+    "lbl_phone": "Phone Number",
+    "placeholder_search": "Search here",
+    "counter_description": "You have pushed the button this many times:",
+    "email_hint_text": "Email"
+  },
+  "vi_VN": {
+    "btn_submit": "Gửi",
+    "lbl_username": "Tên người dùng",
+    "lbl_password": "Mật khẩu",
+    "btn_cancel": "Hủy bỏ",
+    "msg_success": "Thao tác thành công",
+    "msg_error": "Đã xảy ra lỗi",
+    "lbl_email": "Địa chỉ email",
+    "btn_continue": "Tiếp tục",
+    "lbl_phone": "Số điện thoại",
+    "placeholder_search": "Tìm kiếm ở đây",
+    "counter_description": "Bạn đã nhấn nút từng này lần: ",
+    "email_hint_text": "Email"
+  }
+}
