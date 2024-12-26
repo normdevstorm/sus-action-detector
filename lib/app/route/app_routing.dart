@@ -5,10 +5,10 @@ import 'package:flutter/widgets.dart';
 import 'package:go_router/go_router.dart';
 import 'package:suspicious_action_detection/app/route/home_route.dart';
 
+import '../../presentation/camera/ui/screens/camera_stream.dart';
 import '../../presentation/skeleton/ui/screens/skeleton_page.dart';
 import '../../presentation/splash/ui/screens/splash_screen.dart';
 import 'global_keys.dart';
-
 
 class AppRouting {
   static final ValueNotifier<bool> navBarVisibleNotifier =
@@ -26,10 +26,9 @@ class AppRouting {
       debugLogDiagnostics: true,
       routes: [
         GoRoute(
-          parentNavigatorKey: globalRootNavigatorKey,
-          path: '/',
-          builder: (context, state) => const SplashScreen()
-        ),
+            parentNavigatorKey: globalRootNavigatorKey,
+            path: '/',
+            builder: (context, state) => const SplashScreen()),
         //TODO: add authentication route
         // StatefulShellRoute.indexedStack(
         //   parentNavigatorKey: globalRootNavigatorKey,
@@ -44,32 +43,32 @@ class AppRouting {
         StatefulShellRoute.indexedStack(
             restorationScopeId: 'root',
             parentNavigatorKey: globalRootNavigatorKey,
-            builder: (context, state, navigationShell) => SkeletonPage(
-                title: "Skeleton page", child: navigationShell),
+            builder: (context, state, navigationShell) =>
+                SkeletonPage(title: "Skeleton page", child: navigationShell),
             branches: <StatefulShellBranch>[
               StatefulShellBranch(
                   navigatorKey: rootNavigatorHome,
-                  routes: <RouteBase>[
-                    $homeRoute
-                  ]),
+                  routes: <RouteBase>[$homeRoute]),
               StatefulShellBranch(
                   navigatorKey: rootNavigatorCamera,
                   routes: <RouteBase>[
-                    GoRoute(path: '/camera', builder: (context, state) {
-                      return const Center(
-                        child: Text("Camera"),
-                      );
-                    })
+                    GoRoute(
+                        path: '/camera',
+                        builder: (context, state) {
+                          return CameraStream();
+                        })
                   ],
                   preload: true),
               StatefulShellBranch(
                   navigatorKey: rootNavigatorSettings,
                   routes: <RouteBase>[
-                    GoRoute(path: '/settings', builder: (context, state) {
-                      return const Center(
-                        child: Text("Settings"),
-                      );
-                    })
+                    GoRoute(
+                        path: '/settings',
+                        builder: (context, state) {
+                          return const Center(
+                            child: Text("Settings"),
+                          );
+                        })
                   ]),
             ])
       ]);

@@ -85,7 +85,7 @@ class DefaultFirebaseOptions {
     appId: '1:810131365389:web:362ddc4f32cc3c8ae77f44',
     messagingSenderId: '810131365389',
     projectId: 'cloud-message-test-1d41b',
-    authDomain: 'cloud-message-test-1d41b.firebaseapp.com',
+    authDomain: 'cloud-message-test-1d4[1b.firebaseapp.com',
     databaseURL: 'https://cloud-message-test-1d41b-default-rtdb.asia-southeast1.firebasedatabase.app',
     storageBucket: 'cloud-message-test-1d41b.appspot.com',
     measurementId: 'G-26RJ0FYNEQ',

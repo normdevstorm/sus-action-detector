@@ -7,8 +7,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:permission_handler/permission_handler.dart';
 import 'package:record/record.dart';
-import 'package:web_socket_channel/html.dart';
-
+import 'package:web_socket_channel/web_socket_channel.dart';
 import '../../data/iot/datasource/iot_realtime_datasource_impl.dart';
 import '../../domain/iot/repository/iot_realtime_repository.dart';
 
@@ -18,7 +17,7 @@ class AudioStreamingService {
   final AudioPlayer _audioPlayer = AudioPlayer();
 
   Socket? _tcpSocket;
-  HtmlWebSocketChannel? _webSocket;
+  WebSocketChannel? _webSocket;
 
   AudioRecorder? _audioRecorder;
   StreamSubscription? _audioSubscription;
@@ -40,7 +39,7 @@ class AudioStreamingService {
       _audioRecorder = AudioRecorder();
 
       if (kIsWeb) {
-        _webSocket = HtmlWebSocketChannel.connect(
+        _webSocket = WebSocketChannel.connect(
           Uri.parse('ws://$serverHost:$serverPort'),
         );
         // await _webSocket?.ready;

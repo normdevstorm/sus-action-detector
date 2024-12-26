@@ -8,10 +8,7 @@ part 'home_route.g.dart';
 @TypedShellRoute<HomeRoute>(
   routes: [
     TypedGoRoute<HomeScreenRoute>(
-        path: "/home",
-        name: RouteDefine.homeScreen,
-        routes: [
-        ]),
+        path: "/home", name: RouteDefine.homeScreen, routes: []),
   ],
 )
 class HomeRoute extends ShellRouteData {

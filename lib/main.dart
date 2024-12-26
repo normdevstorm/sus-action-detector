@@ -1,12 +1,14 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:easy_localization_loader/easy_localization_loader.dart';
 import 'package:firebase_core/firebase_core.dart';
+// import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'dart:ui' as ui;
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:window_manager/window_manager.dart';
+// import 'package:window_manager/window_manager.dart';
 import 'app/responisve/layout_utils.dart';
 import 'app/route/app_routing.dart';
 import 'firebase_options.dart';
@@ -14,11 +16,11 @@ import 'firebase_options.dart';
 void main() async {
   //create before runApp method to wrap all the procedures
   WidgetsFlutterBinding.ensureInitialized();
-  windowManager.ensureInitialized();
+  // ui.DartPluginRegistrant.ensureInitialized();
+  // windowManager.ensureInitialized();
 
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
-    name: 'default',
   );
 
   runApp(

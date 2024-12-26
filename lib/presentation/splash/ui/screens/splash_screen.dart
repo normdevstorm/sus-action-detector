@@ -17,9 +17,7 @@ class _SplashScreenState extends State<SplashScreen> {
   }
 
   _navigateToHome() async {
-    await Future.delayed(const Duration(seconds: 3), () {
-      context.pushReplacementNamed(RouteDefine.homeScreen);
-    });
+    context.pushReplacementNamed(RouteDefine.homeScreen);
   }
 
   @override
