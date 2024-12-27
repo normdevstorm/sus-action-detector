@@ -79,7 +79,10 @@ dependencies:
   easy_localization_loader: ^2.0.2
   flutter_localizations:
     sdk: flutter
-  flutter_inappwebview: ^6.1.5
+  webview_flutter_web: ^0.2.3+4
+  webview_flutter_platform_interface: ^2.10.0
+  firebase_dart: ^1.2.3
+  # flutter_inappwebview: ^6.1.5
   # web: ^1.0.0
   # js: ^0.7.1
 

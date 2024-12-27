@@ -23,40 +23,6 @@ class _CameraStreamState extends State<CameraStream> {
     );
   }
 
-  // Widget _buildDefaultLayout() {
-  //   return Column(
-  //     children: [
-  //       Expanded(
-  //         flex: 4,
-  //         child: Container(
-  //           color: Colors.black,
-  //           child: WebView(
-  //             initialUrl: 'YOUR_CAMERA_STREAM_URL',
-  //             javascriptMode: JavascriptMode.unrestricted,
-  //           ),
-  //         ),
-  //       ),
-  //       Expanded(
-  //         flex: 1,
-  //         child: Center(
-  //           child: IconButton(
-  //             icon: Icon(
-  //               _isMicrophoneActive ? Icons.mic : Icons.mic_off,
-  //               size: 40,
-  //             ),
-  //             onPressed: () {
-  //               setState(() {
-  //                 _isMicrophoneActive = !_isMicrophoneActive;
-  //               });
-  //               // Add microphone handling logic here
-  //             },
-  //           ),
-  //         ),
-  //       ),
-  //     ],
-  //   );
-  // }
-
   Widget _buildMobileLayout() {
     return CameraStreamMobile(
       streamUrl: "https://www.earthcam.com/usa/tennessee/nashville/",
@@ -73,9 +39,8 @@ class _CameraStreamState extends State<CameraStream> {
 class _buildWebLayout extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    //TODO: create a specific screen for web using in_app webview
     return CameraStreamWeb(
-        streamUrl: "https://inappwebview.dev/docs/intro/#setup-web",
+        streamUrl: "https://www.earthcam.com/usa/tennessee/nashville/?cam=nashville",
         );
   }
 }
