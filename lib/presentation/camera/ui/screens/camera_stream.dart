@@ -7,6 +7,8 @@ import '../../../../app/responisve/responsive_wrapper.dart';
 import 'camera_stream_desktop.dart';
 
 class CameraStream extends StatefulWidget {
+  final String streamUrl;
+  const CameraStream({super.key, required this.streamUrl});
   @override
   _CameraStreamState createState() => _CameraStreamState();
 }
@@ -17,30 +19,19 @@ class _CameraStreamState extends State<CameraStream> {
   @override
   Widget build(BuildContext context) {
     return ResponsiveWrapper(
-      child: _buildDesktopLayout(),
-      mobileScreen: _buildMobileLayout(),
-      desktopScreen: kIsWeb ? _buildWebLayout() : _buildDesktopLayout(),
+      mobileScreen: CameraStreamDesktop(
+        url: widget.streamUrl,
+      ),
+      desktopScreen: kIsWeb
+          ? CameraStreamWeb(
+              streamUrl: widget.streamUrl,
+            )
+          : CameraStreamDesktop(
+              url: widget.streamUrl,
+            ),
+      child: CameraStreamMobile(
+        streamUrl: widget.streamUrl,
+      ),
     );
-  }
-
-  Widget _buildMobileLayout() {
-    return CameraStreamMobile(
-      streamUrl: "https://www.earthcam.com/usa/tennessee/nashville/",
-    );
-  }
-
-  Widget _buildDesktopLayout() {
-    return CameraStreamDesktop(
-      url: "https://www.earthcam.com/usa/tennessee/nashville/",
-    );
-  }
-}
-
-class _buildWebLayout extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return CameraStreamWeb(
-        streamUrl: "https://www.earthcam.com/usa/tennessee/nashville/?cam=nashville",
-        );
   }
 }

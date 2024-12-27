@@ -1,11 +1,22 @@
 
+import 'package:flutter/foundation.dart' show kIsWeb, TargetPlatform, defaultTargetPlatform;
+import 'package:suspicious_action_detection/data/iot/datasource/iot_realtime_datasource_impl.dart';
+import 'package:suspicious_action_detection/data/iot/datasource/iot_realtime_datasource_impl_windows.dart';
+
 import '../../../app/app.dart';
 import '../repository/iot_realtime_repository.dart';
 
 class IotUsecase {
   final IotRealtimeRepository iotRealtimeDatasource;
 
-  const IotUsecase({required this.iotRealtimeDatasource});
+  const IotUsecase._({required this.iotRealtimeDatasource});
+
+  factory IotUsecase() {
+    if( defaultTargetPlatform == TargetPlatform.windows && !kIsWeb) {
+      return IotUsecase._(iotRealtimeDatasource: IotRealtimeDatasourceImplWindows());
+    }
+    return IotUsecase._(iotRealtimeDatasource: IotRealtimeDatasourceImpl());
+  }
 
   Future<void> setDoorStatus(bool isOpen) async {
     await iotRealtimeDatasource.setDoorStatus(isOpen);

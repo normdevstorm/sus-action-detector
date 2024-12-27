@@ -1,19 +1,25 @@
-import 'package:firebase_database/firebase_database.dart';
+import 'package:firebase_dart/database.dart' as additional_firebase_dart;
+import 'package:suspicious_action_detection/app/config/firebase_api.dart';
 import '../../../app/app.dart';
 import '../../../domain/iot/repository/iot_realtime_repository.dart';
 
-class IotRealtimeDatasourceImpl implements IotRealtimeRepository {
-  final databaseRef = FirebaseDatabase.instance.refFromURL(
-      "https://cloud-message-test-1d41b-default-rtdb.asia-southeast1.firebasedatabase.app/");
+class IotRealtimeDatasourceImplWindows implements IotRealtimeRepository {
+  final realtimeDbForWindows = additional_firebase_dart.FirebaseDatabase(
+      app: FirebaseApi.firebaseWindowsApp);
   final iotRef = ConstantManager.firebaseRtdbRefConstant;
   @override
   Future<void> setDoorStatus(bool isOpen) async {
-    await databaseRef.child(iotRef).child(iotRef).child('door').set(isOpen);
+    await realtimeDbForWindows
+        .reference()
+        .child(iotRef)
+        .child('door')
+        .set(isOpen);
   }
 
   @override
   Stream<bool> getDoorStatus() {
-    return databaseRef
+    return realtimeDbForWindows
+        .reference()
         .child(iotRef)
         .child('door')
         .onValue
@@ -22,12 +28,17 @@ class IotRealtimeDatasourceImpl implements IotRealtimeRepository {
 
   @override
   Future<void> setBellStatus(bool isRing) async {
-    await databaseRef.child(iotRef).child('bell').set(isRing);
+    await realtimeDbForWindows
+        .reference()
+        .child(iotRef)
+        .child('bell')
+        .set(isRing);
   }
 
   @override
   Stream<bool> getBellStatus() {
-    return databaseRef
+    return realtimeDbForWindows
+        .reference()
         .child(iotRef)
         .child('bell')
         .onValue
@@ -36,7 +47,8 @@ class IotRealtimeDatasourceImpl implements IotRealtimeRepository {
 
   @override
   Stream<AiAnalysisStatusEnum> getAiAnalysis() {
-    return databaseRef
+    return realtimeDbForWindows
+        .reference()
         .child(iotRef)
         .child("/securityStatus")
         .onValue

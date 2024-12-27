@@ -12,7 +12,6 @@ class SkeletonPage extends StatefulWidget {
 }
 
 class _SkeletonPageState extends State<SkeletonPage> {
-
   @override
   void initState() {
     super.initState();
@@ -27,26 +26,21 @@ class _SkeletonPageState extends State<SkeletonPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text(widget.title),
-      ),
       body: widget.child,
       bottomNavigationBar: BottomNavigationBar(
-                      enableFeedback: false,
-                      currentIndex: widget.child.currentIndex,
-                      selectedItemColor: Colors.blueAccent,
-                      unselectedItemColor: Colors.grey,
-                      onTap: (value) => widget.child.goBranch(value),
-                      items: const [
-                        BottomNavigationBarItem(
-                            icon: Icon(Icons.home_rounded), label: "Home"),
-                        BottomNavigationBarItem(
-                            icon: Icon(Icons.camera_alt_rounded), label: "Camera"),
-                        BottomNavigationBarItem(
-                            icon: Icon(Icons.person_rounded), label: "Profile"),
-                      ]),
-
+          enableFeedback: false,
+          currentIndex: widget.child.currentIndex,
+          selectedItemColor: Colors.blueAccent,
+          unselectedItemColor: Colors.grey,
+          onTap: (value) => widget.child.goBranch(value),
+          items: const [
+            BottomNavigationBarItem(
+                icon: Icon(Icons.home_rounded), label: "Home"),
+            BottomNavigationBarItem(
+                icon: Icon(Icons.camera_alt_rounded), label: "Camera"),
+            BottomNavigationBarItem(
+                icon: Icon(Icons.person_rounded), label: "Profile"),
+          ]),
     );
   }
-
 }

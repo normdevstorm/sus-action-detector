@@ -1,17 +1,23 @@
+import 'package:flutter/foundation.dart'
+    show defaultTargetPlatform, kIsWeb, TargetPlatform;
 import 'package:easy_localization/easy_localization.dart';
 import 'package:easy_localization_loader/easy_localization_loader.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:firebase_dart/firebase_dart.dart' as additional_firebase_dart;
 import 'package:flutter/material.dart';
 import 'dart:ui' as ui;
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 //TODO: UNCOMMENT THESE LINES TO BUILD WEB PLATFORM
+// import 'package:webview_flutter_platform_interface/webview_flutter_platform_interface.dart'
+//     show WebViewPlatform;
+// import 'package:webview_flutter_web/webview_flutter_web.dart'
+//     show WebWebViewPlatform;
 // import 'dart:io' show Platform;
-// import 'package:flutter/foundation.dart' show kIsWeb;
-// import 'package:webview_flutter_platform_interface/webview_flutter_platform_interface.dart' show WebViewPlatform ;
-// import 'package:webview_flutter_web/webview_flutter_web.dart' show WebWebViewPlatform;
+
 import 'package:window_manager/window_manager.dart';
+import 'app/config/firebase_api.dart';
 import 'app/responisve/layout_utils.dart';
 import 'app/route/app_routing.dart';
 import 'firebase_options.dart';
@@ -19,16 +25,36 @@ import 'firebase_options.dart';
 void main() async {
   //create before runApp method to wrap all the procedures
   WidgetsFlutterBinding.ensureInitialized();
-  //TODO: UNCOMMENT THESE LINES TO BUILD WEB PLATFORM
-  // if(kIsWeb && !(Platform.isWindows || Platform.isAndroid)) {
-  //     WebViewPlatform.instance = WebWebViewPlatform();
+
+  if (!kIsWeb) {
+    if (defaultTargetPlatform == TargetPlatform.windows) {
+      windowManager.ensureInitialized();
+      additional_firebase_dart.FirebaseDart.setup(
+          storagePath: 'assets/persistent/storage');
+      final windowsOption = additional_firebase_dart.FirebaseOptions(
+        apiKey: 'AIzaSyBOuZYTcVJZkh2WL0F_tuc-XG2bbF3UvRI',
+        appId: '1:810131365389:web:362ddc4f32cc3c8ae77f44',
+        messagingSenderId: '810131365389',
+        projectId: 'cloud-message-test-1d41b',
+        authDomain: 'cloud-message-test-1d4[1b.firebaseapp.com',
+        databaseURL:
+            'https://cloud-message-test-1d41b-default-rtdb.asia-southeast1.firebasedatabase.app',
+        storageBucket: 'cloud-message-test-1d41b.appspot.com',
+        measurementId: 'G-26RJ0FYNEQ',
+      );
+      FirebaseApi.firebaseWindowsApp =
+          await additional_firebase_dart.Firebase.initializeApp(
+              options: windowsOption);
+    }
+  }
+  //TODO: UNCOMMENT THESE LINES TO BUILD WEB PLATFORM, COMMENT THESE OUT TO BUILD THE OTHER PLATFORMS
+  // if (kIsWeb) {
+  //   WebViewPlatform.instance = WebWebViewPlatform();
   // }
-
-  windowManager.ensureInitialized();
-
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
+
 
   runApp(
     MaterialApp(

@@ -9,6 +9,7 @@ import 'package:permission_handler/permission_handler.dart';
 import 'package:record/record.dart';
 import 'package:web_socket_channel/web_socket_channel.dart';
 import '../../data/iot/datasource/iot_realtime_datasource_impl.dart';
+import '../../data/iot/datasource/iot_realtime_datasource_impl_windows.dart';
 import '../../domain/iot/repository/iot_realtime_repository.dart';
 
 class AudioStreamingService {
@@ -165,7 +166,7 @@ class _AudioStreamingScreenState extends State<AudioStreamingScreen> {
   bool _isRecording = false;
   final _audioPlayer = AudioPlayer();
   final _audioRecorder = AudioRecorder();
-  final IotRealtimeRepository iotRealtimeRepository =
+  final IotRealtimeRepository iotRealtimeRepository =( TargetPlatform.windows == defaultTargetPlatform && !kIsWeb) ? IotRealtimeDatasourceImplWindows() :
       IotRealtimeDatasourceImpl();
 
   @override

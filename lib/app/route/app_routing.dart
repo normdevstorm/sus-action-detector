@@ -55,7 +55,7 @@ class AppRouting {
                     GoRoute(
                         path: '/camera',
                         builder: (context, state) {
-                          return CameraStream();
+                          return CameraStream(streamUrl: "https://flutter.dev/",);
                         })
                   ],
                   preload: true),

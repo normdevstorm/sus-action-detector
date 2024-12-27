@@ -1,5 +1,6 @@
 import 'package:flutter/widgets.dart';
 import 'package:go_router/go_router.dart';
+import 'package:suspicious_action_detection/presentation/home/ui/screens/home_screen.dart';
 
 import '../../presentation/audio/test_stream_audio.dart';
 import 'route_define.dart';
@@ -21,6 +22,6 @@ class HomeRoute extends ShellRouteData {
 class HomeScreenRoute extends GoRouteData {
   @override
   Widget build(BuildContext context, GoRouterState state) {
-    return const AudioStreamingScreen();
+    return const HomeScreen();
   }
 }

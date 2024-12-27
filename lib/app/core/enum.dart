@@ -25,3 +25,13 @@ enum AiAnalysisStatusEnum {
   dangerous
 }
 
+enum IotRTDBVariableType {
+  @JsonValue('DOOR')
+  door,
+  @JsonValue('BELL')
+  bell,
+  @JsonValue('SECURITY_STATUS')
+  securityStatus,
+    @JsonValue('RECENT_CAPTURES')
+  recentCaptures
+}

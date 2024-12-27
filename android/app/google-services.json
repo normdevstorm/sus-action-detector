@@ -86,7 +86,7 @@
       "client_info": {
         "mobilesdk_app_id": "1:810131365389:android:e7f2ae15f0c80c77e77f44",
         "android_client_info": {
-          "package_name": "com.normdevstorm.sus_action_detector"
+          "package_name": "com.example.suspicious_action_detection"
         }
       },
       "oauth_client": [],
