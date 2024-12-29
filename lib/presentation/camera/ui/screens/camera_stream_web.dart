@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:suspicious_action_detection/presentation/camera/ui/widgets/microphone_button.dart';
-import 'package:flutter/material.dart';
 import 'package:webview_flutter_platform_interface/webview_flutter_platform_interface.dart';
 
 class CameraStreamWeb extends StatefulWidget {

@@ -3,7 +3,7 @@ import '../../../app/app.dart';
 class IotDataEntity {
   final bool doorStatus;
   final bool bellStatus;
-  final AiAnalysisStatusEnum aiAnalysisStatus;
+  final WarningLevelEnum aiAnalysisStatus;
 
   IotDataEntity({
     required this.doorStatus,
@@ -14,7 +14,7 @@ class IotDataEntity {
   IotDataEntity copyWith({
     bool? doorStatus,
     bool? bellStatus,
-    AiAnalysisStatusEnum? aiAnalysisStatus,
+    WarningLevelEnum? aiAnalysisStatus,
   }) {
     return IotDataEntity(
       doorStatus: doorStatus ?? this.doorStatus,

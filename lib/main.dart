@@ -14,7 +14,6 @@ import 'package:fluttertoast/fluttertoast.dart';
 //     show WebViewPlatform;
 // import 'package:webview_flutter_web/webview_flutter_web.dart'
 //     show WebWebViewPlatform;
-// import 'dart:io' show Platform;
 
 import 'package:window_manager/window_manager.dart';
 import 'app/config/firebase_api.dart';
@@ -25,7 +24,9 @@ import 'firebase_options.dart';
 void main() async {
   //create before runApp method to wrap all the procedures
   WidgetsFlutterBinding.ensureInitialized();
-
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
   if (!kIsWeb) {
     if (defaultTargetPlatform == TargetPlatform.windows) {
       windowManager.ensureInitialized();
@@ -51,9 +52,7 @@ void main() async {
   // if (kIsWeb) {
   //   WebViewPlatform.instance = WebWebViewPlatform();
   // }
-  await Firebase.initializeApp(
-    options: DefaultFirebaseOptions.currentPlatform,
-  );
+
 
 
   runApp(

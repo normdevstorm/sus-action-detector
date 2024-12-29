@@ -8,13 +8,13 @@ class HomeDesktop extends StatelessWidget {
   final Function _navigateToDoor;
   final Function _navigateToBell;
   final Function _navigateToSecurity;
-  final Function _navigateToCaptures;
+  final VoidCallback _navigateToCaptures;
   const HomeDesktop(
       {super.key,
       required Function navigateToDoor,
       required Function navigateToBell,
       required Function navigateToSecurity,
-      required Function navigateToCaptures})
+      required VoidCallback navigateToCaptures})
       : _navigateToDoor = navigateToDoor,
         _navigateToBell = navigateToBell,
         _navigateToSecurity = navigateToSecurity,
@@ -68,7 +68,7 @@ class HomeDesktop extends StatelessWidget {
                   width: 400,
                   title: 'Recent Captures',
                   icon: Icons.photo_library,
-                  onTap: () => _navigateToCaptures(context),
+                  onTap: _navigateToCaptures,
                   color: Colors.purple,
                 ),
               ],

@@ -5,5 +5,7 @@ abstract class IotRealtimeRepository {
   Stream<bool> getDoorStatus();
   Future<void> setBellStatus(bool isRing);
   Stream<bool> getBellStatus();
-  Stream<AiAnalysisStatusEnum> getAiAnalysis();
+  Stream<WarningLevelEnum> getAiAnalysis();
+  Stream<List<String>> getWarningLevelOneImageUrls();
+  Stream<List<String>> getWarningLevelTwoImageUrls();
 }

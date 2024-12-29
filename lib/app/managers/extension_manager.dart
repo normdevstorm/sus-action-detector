@@ -1,16 +1,16 @@
 part of '../app.dart';
 
 extension AiAnalysisStatusEnumExt on String {
-  AiAnalysisStatusEnum toAiAnalysisStatusEnum() {
+  WarningLevelEnum toAiAnalysisStatusEnum() {
     switch (this) {
       case 'SAFE':
-        return AiAnalysisStatusEnum.safe;
+        return WarningLevelEnum.safe;
       case 'DUBIOUS':
-        return AiAnalysisStatusEnum.dubious;
+        return WarningLevelEnum.dubious;
       case 'DANGEROUS':
-        return AiAnalysisStatusEnum.dangerous;
+        return WarningLevelEnum.dangerous;
       default:
-        return AiAnalysisStatusEnum.safe;
+        return WarningLevelEnum.safe;
     }
   }
 }

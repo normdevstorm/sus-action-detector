@@ -30,53 +30,55 @@ class FeatureBox extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return StreamBuilder(
-        stream: getIotVariableStream(type),
-        builder: (context, snapshot) {
-          // if (snapshot.connectionState == ConnectionState.waiting) {
-          //   return Center(child: CircularProgressIndicator());
-          // }
-          if (snapshot.hasError) {
-            ToastManager.showToast(
-                context: context,
-                message: snapshot.error?.toString() ?? '',
-                isErrorToast: true);
-          }
-          if (snapshot.hasData) {
-            getIotVariableValue(snapshot);
-          }
-          return Container(
-            height: height,
-            width: width,
-            padding: const EdgeInsets.all(16),
-            decoration: BoxDecoration(
-              color: getColor((snapshot.data is AiAnalysisStatusEnum
-                  ? snapshot.data
-                  : null)),
-              borderRadius: BorderRadius.circular(12),
-              border: Border.all(color: color),
-            ),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Icon(icon, size: 48, color: color),
-                const SizedBox(height: 8),
-                Text(title, style: TextStyle(color: color, fontSize: 16)),
-                const SizedBox(height: 8),
-                Text(data, style: TextStyle(color: color, fontSize: 16)),
-                const SizedBox(height: 8),
-                if ([IotRTDBVariableType.door, IotRTDBVariableType.bell]
-                    .contains(type))
-                  CupertinoSwitch(
-                    value: (snapshot.data is bool) ? snapshot.data : false,
-                    onChanged: (value) {
-                      updateIotVariableValue(type, value);
-                    },
-                  ),
-              ],
-            ),
-          );
-        });
+    return GestureDetector(
+      onTap: type == IotRTDBVariableType.recentCaptures ? onTap : null,
+      child: StreamBuilder(
+          stream: getIotVariableStream(type),
+          builder: (context, snapshot) {
+            // if (snapshot.connectionState == ConnectionState.waiting) {
+            //   return Center(child: CircularProgressIndicator());
+            // }
+            if (snapshot.hasError) {
+              ToastManager.showToast(
+                  context: context,
+                  message: snapshot.error?.toString() ?? '',
+                  isErrorToast: true);
+            }
+            if (snapshot.hasData) {
+              getIotVariableValue(snapshot);
+            }
+            return Container(
+              height: height,
+              width: width,
+              padding: const EdgeInsets.all(16),
+              decoration: BoxDecoration(
+                color: getColor(
+                    (snapshot.data is WarningLevelEnum ? snapshot.data : null)),
+                borderRadius: BorderRadius.circular(12),
+                border: Border.all(color: color),
+              ),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Icon(icon, size: 48, color: color),
+                  const SizedBox(height: 8),
+                  Text(title, style: TextStyle(color: color, fontSize: 16)),
+                  const SizedBox(height: 8),
+                  Text(data, style: TextStyle(color: color, fontSize: 16)),
+                  const SizedBox(height: 8),
+                  if ([IotRTDBVariableType.door, IotRTDBVariableType.bell]
+                      .contains(type))
+                    CupertinoSwitch(
+                      value: (snapshot.data is bool) ? snapshot.data : false,
+                      onChanged: (value) {
+                        updateIotVariableValue(type, value);
+                      },
+                    ),
+                ],
+              ),
+            );
+          }),
+    );
   }
 
   void getIotVariableValue(AsyncSnapshot<dynamic> snapshot) {
@@ -88,7 +90,7 @@ class FeatureBox extends StatelessWidget {
         data = (snapshot.data as bool) == true ? 'RINGING' : 'IDLE';
         break;
       case IotRTDBVariableType.securityStatus:
-        data = (snapshot.data as AiAnalysisStatusEnum).name.toUpperCase();
+        data = (snapshot.data as WarningLevelEnum).name.toUpperCase();
         break;
       // case IotRTDBVariableType.recentCaptures:
       // data = snapshot.data as List<String>;
@@ -126,7 +128,7 @@ class FeatureBox extends StatelessWidget {
     }
   }
 
-  Color getColor(AiAnalysisStatusEnum? securityStatus) {
+  Color getColor(WarningLevelEnum? securityStatus) {
     switch (type) {
       case IotRTDBVariableType.door:
         return Colors.green.withOpacity(0.1);
@@ -139,13 +141,13 @@ class FeatureBox extends StatelessWidget {
     }
   }
 
-  Color getSecurityBoxColor(AiAnalysisStatusEnum? securityStatus) {
+  Color getSecurityBoxColor(WarningLevelEnum? securityStatus) {
     switch (securityStatus) {
-      case AiAnalysisStatusEnum.safe:
+      case WarningLevelEnum.safe:
         return Colors.blue.withOpacity(0.3);
-      case AiAnalysisStatusEnum.dubious:
+      case WarningLevelEnum.dubious:
         return Colors.orange.withOpacity(0.3);
-      case AiAnalysisStatusEnum.dangerous:
+      case WarningLevelEnum.dangerous:
         return Colors.red.withOpacity(0.5);
       default:
         return Colors.blue.withOpacity(0.1);

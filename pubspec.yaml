@@ -81,7 +81,8 @@ dependencies:
     sdk: flutter
   webview_flutter_web: ^0.2.3+4
   webview_flutter_platform_interface: ^2.10.0
-  firebase_dart: ^1.2.3
+  firebase_dart:
+    path: packages/firebase_dart
   # flutter_inappwebview: ^6.1.5
   # web: ^1.0.0
   # js: ^0.7.1

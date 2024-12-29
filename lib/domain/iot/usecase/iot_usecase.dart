@@ -1,5 +1,5 @@
-
-import 'package:flutter/foundation.dart' show kIsWeb, TargetPlatform, defaultTargetPlatform;
+import 'package:flutter/foundation.dart'
+    show kIsWeb, TargetPlatform, defaultTargetPlatform;
 import 'package:suspicious_action_detection/data/iot/datasource/iot_realtime_datasource_impl.dart';
 import 'package:suspicious_action_detection/data/iot/datasource/iot_realtime_datasource_impl_windows.dart';
 
@@ -12,8 +12,9 @@ class IotUsecase {
   const IotUsecase._({required this.iotRealtimeDatasource});
 
   factory IotUsecase() {
-    if( defaultTargetPlatform == TargetPlatform.windows && !kIsWeb) {
-      return IotUsecase._(iotRealtimeDatasource: IotRealtimeDatasourceImplWindows());
+    if (defaultTargetPlatform == TargetPlatform.windows && !kIsWeb) {
+      return IotUsecase._(
+          iotRealtimeDatasource: IotRealtimeDatasourceImplWindows());
     }
     return IotUsecase._(iotRealtimeDatasource: IotRealtimeDatasourceImpl());
   }
@@ -34,7 +35,15 @@ class IotUsecase {
     return iotRealtimeDatasource.getBellStatus();
   }
 
-  Stream<AiAnalysisStatusEnum> getAiAnalysis() {
+  Stream<WarningLevelEnum> getAiAnalysis() {
     return iotRealtimeDatasource.getAiAnalysis();
+  }
+
+  Stream<List<String>> getWarningLevelOneImageUrls() {
+    return iotRealtimeDatasource.getWarningLevelOneImageUrls();
+  }
+
+  Stream<List<String>> getWarningLevelTwoImageUrls() {
+    return iotRealtimeDatasource.getWarningLevelTwoImageUrls();
   }
 }

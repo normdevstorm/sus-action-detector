@@ -16,7 +16,7 @@ enum BlocStatus {
   inProgress
 }
 
-enum AiAnalysisStatusEnum {
+enum WarningLevelEnum {
   @JsonValue('SAFE')
   safe,
   @JsonValue('DUBIOUS')
@@ -32,6 +32,6 @@ enum IotRTDBVariableType {
   bell,
   @JsonValue('SECURITY_STATUS')
   securityStatus,
-    @JsonValue('RECENT_CAPTURES')
+  @JsonValue('RECENT_CAPTURES')
   recentCaptures
 }

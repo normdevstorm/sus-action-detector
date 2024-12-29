@@ -4,6 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:go_router/go_router.dart';
 import 'package:suspicious_action_detection/app/route/home_route.dart';
+import 'package:suspicious_action_detection/app/route/route_define.dart';
+import 'package:suspicious_action_detection/presentation/warning/ui/screens/warning_screen.dart';
 
 import '../../presentation/camera/ui/screens/camera_stream.dart';
 import '../../presentation/skeleton/ui/screens/skeleton_page.dart';
@@ -53,9 +55,12 @@ class AppRouting {
                   navigatorKey: rootNavigatorCamera,
                   routes: <RouteBase>[
                     GoRoute(
+                        name: RouteDefine.camera,
                         path: '/camera',
                         builder: (context, state) {
-                          return CameraStream(streamUrl: "https://flutter.dev/",);
+                          return CameraStream(
+                            streamUrl: "https://flutter.dev/",
+                          );
                         })
                   ],
                   preload: true),
@@ -63,11 +68,10 @@ class AppRouting {
                   navigatorKey: rootNavigatorSettings,
                   routes: <RouteBase>[
                     GoRoute(
+                        name: RouteDefine.settings,
                         path: '/settings',
                         builder: (context, state) {
-                          return const Center(
-                            child: Text("Settings"),
-                          );
+                          return WarningScreen();
                         })
                   ]),
             ])

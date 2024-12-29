@@ -19,4 +19,7 @@ class ConstantManager {
   ];
 
   static const String firebaseRtdbRefConstant = 'iot';
+  static const String imageStoragePathConstant = '/detections/';
+  static const String imageStorageLevelOneWarning = 'level_1/';
+  static const String imageStorageLevelTwoWarning = 'level_2/';
 }

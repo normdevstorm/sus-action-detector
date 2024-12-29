@@ -554,10 +554,9 @@ packages:
   firebase_dart:
     dependency: "direct main"
     description:
-      name: firebase_dart
-      sha256: "7c84aa695bd583e1289f73a179cf319dd3e84290f3400e796670c4f73bd089f3"
-      url: "https://pub.dev"
-    source: hosted
+      path: "packages/firebase_dart"
+      relative: true
+    source: path
     version: "1.2.3"
   firebase_database:
     dependency: "direct main"
