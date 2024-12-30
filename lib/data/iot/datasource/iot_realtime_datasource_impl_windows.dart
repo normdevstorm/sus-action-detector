@@ -55,52 +55,89 @@ class IotRealtimeDatasourceImplWindows implements IotRealtimeRepository {
         .map((event) => event.snapshot.value as bool);
   }
 
-  @override
-  Stream<WarningLevelEnum> getAiAnalysis() {
-    return realtimeDbForWindows
-        .reference()
-        .child(iotRef)
-        .child("/securityStatus")
-        .onValue
-        .map((event) {
-      final result = event.snapshot.value as String;
-      return result.toAiAnalysisStatusEnum();
-    });
+  // @override
+  // Stream<WarningLevelEnum> getAiAnalysis() {
+  //   return realtimeDbForWindows
+  //       .reference()
+  //       .child(iotRef)
+  //       .child("/securityStatus")
+  //       .onValue
+  //       .map((event) {
+  //     final result = event.snapshot.value as String;
+  //     return result.toAiAnalysisStatusEnum();
+  //   });
+  // }
+
+    @override
+  Stream<WarningLevelEnum> getAiAnalysis() async* {
+    while (true) {
+  try {
+    bool levelOneAlert = await realtimeDbForWindows.reference()
+        .child(ConstantManager.firebaseRtdbAlertLevelOneRefConstant)
+        .child("detected")
+        .get()
+        .then((value) => value.value as bool);
+    bool levelTwoAlert = await realtimeDbForWindows.reference()
+        .child(ConstantManager.firebaseRtdbAlertLevelTwoRefConstant)
+        .child("detected")
+        .get()
+        .then((value) => value.value as bool);
+  
+    if (!levelOneAlert && !levelTwoAlert) {
+      yield WarningLevelEnum.safe;
+    } else if (levelOneAlert && !levelTwoAlert) {
+      yield WarningLevelEnum.dubious;
+    } else {
+      yield WarningLevelEnum.dangerous;
+    }
+  } on Exception catch (e) {
+    Logger().e(e);
+    yield WarningLevelEnum.safe;
+  }
+  await Future.delayed(Duration(seconds: 2)); 
+}
+// Adjust interval as needed
   }
 
   @override
   Stream<List<String>> getWarningLevelOneImageUrls() async* {
-    try {
-      final additional_firebase_storage_dart.ListResult listResult =
-          await levelOneWarningRef.listAll();
-      List<String> urls = [];
-      for (final item in listResult.items) {
-        final url = (await item.getDownloadURL());
-        urls.add(url);
-      }
-      yield urls;
-    } catch (e) {
-      Logger().e(e);
-      yield [];
+    while (true) {
+  try {
+    final additional_firebase_storage_dart.ListResult listResult =
+        await levelOneWarningRef.listAll();
+    List<String> urls = [];
+    for (final item in listResult.items) {
+      final url = (await item.getDownloadURL());
+      urls.add(url);
     }
-    await Future.delayed(Duration(seconds: 10)); // Adjust interval as needed
+    yield urls;
+  } catch (e) {
+    Logger().e(e);
+    yield [];
+  }
+  await Future.delayed(Duration(seconds: 3)); 
+}
+// Adjust interval as needed
   }
 
   @override
   Stream<List<String>> getWarningLevelTwoImageUrls() async* {
-    try {
-      final additional_firebase_storage_dart.ListResult listResult =
-          await levelTwoWarningRef.listAll();
-      List<String> urls = [];
-      for (final item in listResult.items) {
-        final url = (await item.getDownloadURL());
-        urls.add(url);
-      }
-      yield urls;
-    } catch (e) {
-      Logger().e(e);
-      yield [];
+    while (true) {
+  try {
+    final additional_firebase_storage_dart.ListResult listResult =
+        await levelTwoWarningRef.listAll();
+    List<String> urls = [];
+    for (final item in listResult.items) {
+      final url = (await item.getDownloadURL());
+      urls.add(url);
     }
-    await Future.delayed(Duration(seconds: 10)); // Adjust interval as needed
+    yield urls;
+  } catch (e) {
+    Logger().e(e);
+    yield [];
+  }
+  await Future.delayed(Duration(seconds: 3)); 
+}
+// Adjust interval as needed
   }
 }
