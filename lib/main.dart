@@ -85,7 +85,7 @@ class MyApp extends StatelessWidget {
       locale: context.locale,
       supportedLocales: context.supportedLocales,
       localizationsDelegates: context.localizationDelegates,
-      title: 'Flutter Demo',
+      title: 'Suspicious Action Detector',
       themeMode: ThemeMode.light,
       darkTheme: ThemeData.dark(),
       theme: ThemeData.light().copyWith(
