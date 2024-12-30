@@ -1,0 +1,13 @@
+str,en_US,vi_VN
+btn_submit,Submit,Gửi
+lbl_username,Username,Tên người dùng
+lbl_password,Password,Mật khẩu
+btn_cancel,Cancel,Hủy bỏ
+msg_success,Operation successful,Thao tác thành công
+msg_error,An error occurred,Đã xảy ra lỗi
+lbl_email,Email Address,Địa chỉ email
+btn_continue,Continue,Tiếp tục
+lbl_phone,Phone Number,Số điện thoại
+placeholder_search,Search here,Tìm kiếm ở đây
+counter_description,You have pushed the button this many times:,Bạn đã nhấn nút từng này lần: 
+email_hint_text,Email,Email
