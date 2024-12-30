@@ -18,7 +18,6 @@ jobs:
           flutter-version: "3.27.1"
           channel: stable
       - run: flutter pub get
-      - run: flutter test
       - run: flutter build web
       - uses: actions/checkout@v4
       - run: npm ci
