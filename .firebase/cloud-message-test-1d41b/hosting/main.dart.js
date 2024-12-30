@@ -88104,7 +88104,7 @@ s=a.az(n).f
 n=A.a([a.az(n).x,B.n0,B.n1,B.n_],t.a9)
 r=A.o1(B.ai,p,p)
 q=A.o1(B.a2,p,p).ai0(B.a_P)
-return new A.Ac(new A.aig(new A.pU(p,p,$.aNx(),o,"Flutter Demo",q,r,B.a89,m,n,s.d,!1,p)),p)}}
+return new A.Ac(new A.aig(new A.pU(p,p,$.aNx(),o,"Suspicious Action Detector",q,r,B.a89,m,n,s.d,!1,p)),p)}}
 A.aig.prototype={
 $2(a,b){var s=this.a
 return new A.qD(new A.aif(s),s,A.aUL(b),null)},
