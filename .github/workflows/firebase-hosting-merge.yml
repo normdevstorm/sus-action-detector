@@ -10,12 +10,16 @@ jobs:
   build_and_deploy:
     runs-on: ubuntu-latest
     steps:
-      - uses: subosito/flutter-action@v2
+      - name: Clone repository
+        uses: actions/checkout@v4
+      - name: Set up Flutter
+        uses: subosito/flutter-action@v2
         with:
           flutter-version: "3.27.1"
-          channel: 'stable'
-      - name: Get dependencies
-        run: flutter pub get
+          channel: stable
+      - run: flutter pub get
+      - run: flutter test
+      - run: flutter build web
       - uses: actions/checkout@v4
       - run: npm ci
       - uses: FirebaseExtended/action-hosting-deploy@v0
