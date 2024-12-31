@@ -59,7 +59,7 @@ class AppRouting {
                         path: '/camera',
                         builder: (context, state) {
                           return CameraStream(
-                            streamUrl: "https://flutter.dev/",
+                            streamUrl: "http://10.0.54.210",
                           );
                         })
                   ],
