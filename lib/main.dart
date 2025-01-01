@@ -9,7 +9,7 @@ import 'dart:ui' as ui;
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:fluttertoast/fluttertoast.dart';
-//TODO: UNCOMMENT THESE LINES TO BUILD WEB PLATFORM
+// TODO: UNCOMMENT THESE LINES TO BUILD WEB PLATFORM
 import 'package:webview_flutter_platform_interface/webview_flutter_platform_interface.dart'
     show WebViewPlatform;
 import 'package:webview_flutter_web/webview_flutter_web.dart'
@@ -48,7 +48,7 @@ void main() async {
               options: windowsOption);
     }
   }
-  //TODO: UNCOMMENT THESE LINES TO BUILD WEB PLATFORM, COMMENT THESE OUT TO BUILD THE OTHER PLATFORMS
+  // TODO: UNCOMMENT THESE LINES TO BUILD WEB PLATFORM, COMMENT THESE OUT TO BUILD THE OTHER PLATFORMS
   if (kIsWeb) {
     WebViewPlatform.instance = WebWebViewPlatform();
   }
