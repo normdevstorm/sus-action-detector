@@ -15,6 +15,7 @@ class FeatureBox extends StatelessWidget {
   final double? width;
   final IotUsecase iotUsecase = IotUsecase();
   final IotRTDBVariableType type;
+  final bool isMobile;
   String data = '';
 
   FeatureBox({
@@ -22,6 +23,7 @@ class FeatureBox extends StatelessWidget {
     required this.icon,
     required this.onTap,
     required this.type,
+    this.isMobile = false,
     this.height,
     this.width,
     this.color = Colors.blue,
@@ -57,7 +59,31 @@ class FeatureBox extends StatelessWidget {
                 borderRadius: BorderRadius.circular(12),
                 border: Border.all(color: color),
               ),
-              child: Column(
+              child: isMobile ?  Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                Icon(icon, size: 36.sp, color: color),
+                SizedBox(width: 8.w),
+                Expanded(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Text(title, style: TextStyle(color: color, fontSize: 14.sp)),
+                      SizedBox(height: 4.h),
+                      Text(data, style: TextStyle(color: color, fontSize: 14.sp)),
+                    ],
+                  ),
+                ),
+                if ([IotRTDBVariableType.door, IotRTDBVariableType.bell].contains(type))
+                  CupertinoSwitch(
+                    value: (snapshot.data is bool) ? snapshot.data : false,
+                    onChanged: (value) {
+                      updateIotVariableValue(type, value);
+                    },
+                  ),
+              ],
+            ) : Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Icon(icon, size: 48, color: color),

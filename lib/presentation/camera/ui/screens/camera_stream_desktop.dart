@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:suspicious_action_detection/presentation/camera/ui/widgets/microphone_button.dart';
 import 'package:webview_windows/webview_windows.dart';
 import 'package:window_manager/window_manager.dart';
@@ -83,7 +84,13 @@ class _CameraStreamDesktopState extends State<CameraStreamDesktop> {
         Expanded(
           flex: 6,
           child: Container(
-            color: Colors.black,
+            decoration: BoxDecoration(
+              color: Colors.black,
+              border: Border.all(color: Colors.white),
+              borderRadius: BorderRadius.circular(10.r),
+            ),
+            width: 800.w,
+            height: 700.h,
             child: Webview(
               width: MediaQuery.of(context).size.width * 0.7,
               _windowWebviewController,
@@ -103,9 +110,9 @@ class _CameraStreamDesktopState extends State<CameraStreamDesktop> {
   }
 
   void _handleMicrophone() {
-            setState(() {
-              _isMicrophoneActive = !_isMicrophoneActive;
-            });
-            //TODO: Add microphone handling logic here
-          }
+    setState(() {
+      _isMicrophoneActive = !_isMicrophoneActive;
+    });
+    //TODO: Add microphone handling logic here
+  }
 }

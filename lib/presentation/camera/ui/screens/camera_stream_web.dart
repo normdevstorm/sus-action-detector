@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:suspicious_action_detection/presentation/camera/ui/widgets/microphone_button.dart';
 import 'package:webview_flutter_platform_interface/webview_flutter_platform_interface.dart';
 
@@ -35,9 +36,13 @@ class _CameraStreamWebState extends State<CameraStreamWeb> {
         body: SafeArea(
             child: Column(children: <Widget>[
       Expanded(
-        child: PlatformWebViewWidget(
-          PlatformWebViewWidgetCreationParams(controller: _controller),
-        ).build(context),
+        child: SizedBox(
+            width: 800.w,
+            height: 700.h,
+          child: PlatformWebViewWidget(
+            PlatformWebViewWidgetCreationParams(controller: _controller),
+          ).build(context),
+        ),
       ),
       MicrophoneButton(
         isMicrophoneActive: isMicrophoneActive,

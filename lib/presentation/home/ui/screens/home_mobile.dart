@@ -25,33 +25,41 @@ class HomeMobile extends StatelessWidget {
       appBar: AppBar(title: const Text('Control Panel')),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
-        child: GridView.count(
-          crossAxisCount: 2,
-          mainAxisSpacing: 16,
-          crossAxisSpacing: 16,
+        child: ListView(
           children: [
             FeatureBox(
+              height: 150,
+              isMobile: true,
               type: IotRTDBVariableType.door,
               title: 'Door Control',
               icon: Icons.door_front_door,
               onTap: () => _navigateToDoor,
               color: Colors.green,
             ),
+            SizedBox(height: 16),
             FeatureBox(
+              height: 150,
+              isMobile: true,
               type: IotRTDBVariableType.bell,
               title: 'Bell',
               icon: Icons.notifications,
               onTap: () => _navigateToBell,
               color: Colors.orange,
             ),
+            SizedBox(height: 16),
             FeatureBox(
+              height: 150,
+              isMobile: true,
               type: IotRTDBVariableType.securityStatus,
               title: 'Security Status',
               icon: Icons.security,
               onTap: () => _navigateToSecurity,
               color: Colors.red,
             ),
+            SizedBox(height: 16),
             FeatureBox(
+              height: 150,
+              isMobile: true,
               type: IotRTDBVariableType.recentCaptures,
               title: 'Recent Captures',
               icon: Icons.photo_library,
