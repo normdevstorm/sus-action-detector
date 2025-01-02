@@ -59,7 +59,7 @@ class AppRouting {
                         path: '/camera',
                         builder: (context, state) {
                           return CameraStream(
-                            streamUrl: "http://188.166.177.199:8000/client",
+                            streamUrl: "https://cam.duynguyendev.xyz/client",
                           );
                         })
                   ],

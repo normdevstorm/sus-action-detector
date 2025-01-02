@@ -1,5 +1,6 @@
 import 'package:flutter/foundation.dart'
-    show defaultTargetPlatform, kIsWeb, TargetPlatform;
+    show TargetPlatform, defaultTargetPlatform, kIsWeb;
+
 import 'package:easy_localization/easy_localization.dart';
 import 'package:easy_localization_loader/easy_localization_loader.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -10,10 +11,10 @@ import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 // TODO: UNCOMMENT THESE LINES TO BUILD WEB PLATFORM
-// import 'package:webview_flutter_platform_interface/webview_flutter_platform_interface.dart'
-//     show WebViewPlatform;
-// import 'package:webview_flutter_web/webview_flutter_web.dart'
-//     show WebWebViewPlatform;
+import 'package:webview_flutter_platform_interface/webview_flutter_platform_interface.dart'
+    show WebViewPlatform;
+import 'package:webview_flutter_web/webview_flutter_web.dart'
+    show WebWebViewPlatform;
 
 import 'package:window_manager/window_manager.dart';
 import 'app/config/firebase_api.dart';
@@ -48,10 +49,11 @@ void main() async {
               options: windowsOption);
     }
   }
+
   // TODO: UNCOMMENT THESE LINES TO BUILD WEB PLATFORM, COMMENT THESE OUT TO BUILD THE OTHER PLATFORMS
-  // if (kIsWeb) {
-  //   WebViewPlatform.instance = WebWebViewPlatform();
-  // }
+  if (kIsWeb) {
+    WebViewPlatform.instance = WebWebViewPlatform();
+  }
 
 
 

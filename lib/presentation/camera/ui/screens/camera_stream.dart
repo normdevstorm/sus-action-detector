@@ -20,8 +20,8 @@ class _CameraStreamState extends State<CameraStream> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: ResponsiveWrapper(
-        mobileScreen: CameraStreamDesktop(
-          url: widget.streamUrl,
+        mobileScreen: CameraStreamMobile(
+          streamUrl: widget.streamUrl,
         ),
         desktopScreen: kIsWeb
             ? CameraStreamWeb(

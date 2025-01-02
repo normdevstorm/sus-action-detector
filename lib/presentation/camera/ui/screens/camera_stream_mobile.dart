@@ -25,26 +25,33 @@ class _CameraStreamMobileState extends State<CameraStreamMobile> {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        Expanded(
-          flex: 4,
-          child: Container(
-            color: Colors.black,
-            child: WebViewWidget(
-              controller: _webViewController,
+    return RefreshIndicator(
+      onRefresh: () async {
+        _webViewController.reload();
+      },
+      child: SafeArea(
+        child: Column(
+          children: [
+            Expanded(
+              flex: 4,
+              child: Container(
+                color: Colors.black,
+                child: WebViewWidget(
+                  controller: _webViewController,
+                ),
+              ),
             ),
-          ),
+            // Expanded(
+            //   flex: 1,
+            //   child: Center(
+            //       child: MicrophoneButton(
+            //     isMicrophoneActive: _isMicrophoneActive,
+            //     onPressed: _handleMicrophone,
+            //   )),
+            // ),
+          ],
         ),
-        Expanded(
-          flex: 1,
-          child: Center(
-              child: MicrophoneButton(
-            isMicrophoneActive: _isMicrophoneActive,
-            onPressed: _handleMicrophone,
-          )),
-        ),
-      ],
+      ),
     );
   }
 
