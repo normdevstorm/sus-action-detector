@@ -19,7 +19,7 @@ class _SplashScreenState extends State<SplashScreen> {
   }
 
   _navigateToHome() async {
-    context.pushReplacementNamed(RouteDefine.homeScreen);
+    context.pushReplacementNamed(RouteDefine.login);
   }
 
   @override

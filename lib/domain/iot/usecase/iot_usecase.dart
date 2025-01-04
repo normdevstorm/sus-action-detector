@@ -19,6 +19,18 @@ class IotUsecase {
     return IotUsecase._(iotRealtimeDatasource: IotRealtimeDatasourceImpl());
   }
 
+  Future signIn(String email, String password) async {
+    return await iotRealtimeDatasource.signIn(email, password);
+  }
+
+  Future<void> signOut() async {
+    await iotRealtimeDatasource.signOut();
+  }
+
+  Stream userChanges() {
+    return iotRealtimeDatasource.userChanges();
+  }
+
   Future<void> setDoorStatus(bool isOpen) async {
     await iotRealtimeDatasource.setDoorStatus(isOpen);
   }

@@ -1,5 +1,6 @@
 import 'package:firebase_dart/database.dart' as additional_firebase_dart;
 import 'package:firebase_dart/storage.dart' as additional_firebase_storage_dart;
+import 'package:firebase_dart/auth.dart' as additional_firebase_auth_dart;
 // import 'package:firebase_storage/firebase_storage.dart';
 import 'package:logger/logger.dart';
 import 'package:suspicious_action_detection/app/config/firebase_api.dart';
@@ -7,6 +8,7 @@ import '../../../app/app.dart';
 import '../../../domain/iot/repository/iot_realtime_repository.dart';
 
 class IotRealtimeDatasourceImplWindows implements IotRealtimeRepository {
+  final firebaseAuth = additional_firebase_auth_dart.FirebaseAuth.instance;
   final realtimeDbForWindows = additional_firebase_dart.FirebaseDatabase(
       app: FirebaseApi.firebaseWindowsApp);
   static final _firestorageForWindows =
@@ -17,6 +19,33 @@ class IotRealtimeDatasourceImplWindows implements IotRealtimeRepository {
       "${ConstantManager.imageStoragePathConstant}/${ConstantManager.imageStorageLevelOneWarning}");
   final levelTwoWarningRef = _firestorageForWindows.ref(
       "${ConstantManager.imageStoragePathConstant}/${ConstantManager.imageStorageLevelTwoWarning}");
+
+  @override
+  Future<additional_firebase_auth_dart.UserCredential?> signIn(
+      String email, String password) async {
+    try {
+      return await firebaseAuth.signInWithEmailAndPassword(
+          email: email, password: password);
+    } on additional_firebase_auth_dart.FirebaseAuthException catch (e) {
+      if (e.code == 'user-not-found') {
+        print('No user found for that email.');
+      } else if (e.code == 'wrong-password') {
+        print('Wrong password provided for that user.');
+      }
+    }
+    return null;
+  }
+
+  @override
+  Future<void> signOut() async {
+    await firebaseAuth.signOut();
+  }
+    @override
+  Stream<additional_firebase_auth_dart.User?> userChanges() {
+    return firebaseAuth.userChanges();
+  }
+
+
   @override
   Future<void> setDoorStatus(bool isOpen) async {
     await realtimeDbForWindows
@@ -81,7 +110,7 @@ class IotRealtimeDatasourceImplWindows implements IotRealtimeRepository {
             .reference()
             .child(ConstantManager.firebaseRtdbAlertLevelTwoRefConstant)
             .child("detected")
-            .get() ;
+            .get();
 
         if (!levelOneAlert && !levelTwoAlert) {
           yield WarningLevelEnum.safe;

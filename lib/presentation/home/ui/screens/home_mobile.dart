@@ -8,21 +8,28 @@ class HomeMobile extends StatelessWidget {
   final Function _navigateToBell;
   final Function _navigateToSecurity;
   final VoidCallback _navigateToCaptures;
+  final VoidCallback _logout;
   const HomeMobile(
       {super.key,
       required Function navigateToDoor,
       required Function navigateToBell,
       required Function navigateToSecurity,
-      required VoidCallback navigateToCaptures})
+      required VoidCallback navigateToCaptures,
+      required VoidCallback logout})
       : _navigateToDoor = navigateToDoor,
         _navigateToBell = navigateToBell,
         _navigateToSecurity = navigateToSecurity,
-        _navigateToCaptures = navigateToCaptures;
+        _navigateToCaptures = navigateToCaptures,
+        _logout = logout;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: const Text('Control Panel')),
+      floatingActionButton: FloatingActionButton(
+        onPressed: _logout,
+        child: const Icon(Icons.logout),
+      ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
         child: ListView(

@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:suspicious_action_detection/app/app.dart';
 
 import '../widgets/feature_box.dart';
@@ -9,20 +8,26 @@ class HomeDesktop extends StatelessWidget {
   final Function _navigateToBell;
   final Function _navigateToSecurity;
   final VoidCallback _navigateToCaptures;
+  final VoidCallback logout;
   const HomeDesktop(
       {super.key,
       required Function navigateToDoor,
       required Function navigateToBell,
       required Function navigateToSecurity,
-      required VoidCallback navigateToCaptures})
+      required VoidCallback navigateToCaptures, required VoidCallback logout})
       : _navigateToDoor = navigateToDoor,
         _navigateToBell = navigateToBell,
         _navigateToSecurity = navigateToSecurity,
-        _navigateToCaptures = navigateToCaptures;
+        _navigateToCaptures = navigateToCaptures,
+        logout = logout;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      floatingActionButton: FloatingActionButton(
+        onPressed: logout,
+        child: const Icon(Icons.logout),
+      ),
       body: SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.all(24.0),

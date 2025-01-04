@@ -8,6 +8,7 @@ import 'package:suspicious_action_detection/app/route/route_define.dart';
 import 'package:suspicious_action_detection/presentation/warning/ui/screens/warning_screen.dart';
 
 import '../../presentation/camera/ui/screens/camera_stream.dart';
+import '../../presentation/login/ui/screens/login_screen.dart';
 import '../../presentation/skeleton/ui/screens/skeleton_page.dart';
 import '../../presentation/splash/ui/screens/splash_screen.dart';
 import 'global_keys.dart';
@@ -42,6 +43,11 @@ class AppRouting {
         //   ],
         //   builder: (context, state, navigationShell) => navigationShell,
         // ),
+                GoRoute(
+            parentNavigatorKey: globalRootNavigatorKey,
+            path: '/login',
+            name: RouteDefine.login,
+            builder: (context, state) => LoginScreen()),
         StatefulShellRoute.indexedStack(
             restorationScopeId: 'root',
             parentNavigatorKey: globalRootNavigatorKey,

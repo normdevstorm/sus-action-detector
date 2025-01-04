@@ -1,10 +1,12 @@
 import 'package:firebase_database/firebase_database.dart';
 import 'package:firebase_storage/firebase_storage.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:logger/logger.dart';
 import '../../../app/app.dart';
 import '../../../domain/iot/repository/iot_realtime_repository.dart';
 
 class IotRealtimeDatasourceImpl implements IotRealtimeRepository {
+  final firebaseAuth = FirebaseAuth.instance;
   final iotRef = ConstantManager.firebaseRtdbRefConstant;
   static final _imageStoragePath = ConstantManager.imageStoragePathConstant;
   final databaseRef = FirebaseDatabase.instance.refFromURL(
@@ -17,6 +19,31 @@ class IotRealtimeDatasourceImpl implements IotRealtimeRepository {
       .ref()
       .child(_imageStoragePath)
       .child(ConstantManager.imageStorageLevelTwoWarning);
+  @override
+  Future<UserCredential?> signIn(String email, String password) async {
+    try {
+      return await firebaseAuth.signInWithEmailAndPassword(
+          email: email, password: password);
+    } on FirebaseAuthException catch (e) {
+      if (e.code == 'user-not-found') {
+        print('No user found for that email.');
+      } else if (e.code == 'wrong-password') {
+        print('Wrong password provided for that user.');
+      }
+      return null;
+    }
+  }
+
+  @override
+  Future<void> signOut() async {
+    await firebaseAuth.signOut();
+  }
+
+  @override
+  Stream<User?> userChanges() {
+    return firebaseAuth.userChanges();
+  }
+
   @override
   Future<void> setDoorStatus(bool isOpen) async {
     await databaseRef.child(iotRef).child('door').set(isOpen);
@@ -60,40 +87,40 @@ class IotRealtimeDatasourceImpl implements IotRealtimeRepository {
   @override
   Stream<List<String>> getWarningLevelOneImageUrls() async* {
     while (true) {
-  try {
-    final ListResult listResult = await levelOneWarningRef.listAll();
-    List<String> urls = [];
-    for (final item in listResult.items) {
-      final url = (await item.getDownloadURL());
-      urls.add(url);
+      try {
+        final ListResult listResult = await levelOneWarningRef.listAll();
+        List<String> urls = [];
+        for (final item in listResult.items) {
+          final url = (await item.getDownloadURL());
+          urls.add(url);
+        }
+        yield urls;
+      } catch (e) {
+        Logger().e(e);
+        yield [];
+      }
+      await Future.delayed(Duration(seconds: 3));
     }
-    yield urls;
-  } catch (e) {
-    Logger().e(e);
-    yield [];
-  }
-  await Future.delayed(Duration(seconds: 3)); 
-}
 // Adjust interval as needed
   }
 
   @override
   Stream<List<String>> getWarningLevelTwoImageUrls() async* {
     while (true) {
-  try {
-    final ListResult listResult = await levelWoWarningRef.listAll();
-    List<String> urls = [];
-    for (final item in listResult.items) {
-      final url = (await item.getDownloadURL());
-      urls.add(url);
+      try {
+        final ListResult listResult = await levelWoWarningRef.listAll();
+        List<String> urls = [];
+        for (final item in listResult.items) {
+          final url = (await item.getDownloadURL());
+          urls.add(url);
+        }
+        yield urls;
+      } catch (e) {
+        Logger().e(e);
+        yield [];
+      }
+      await Future.delayed(Duration(seconds: 3));
     }
-    yield urls;
-  } catch (e) {
-    Logger().e(e);
-    yield [];
-  }
-  await Future.delayed(Duration(seconds: 3)); 
-}
 // Adjust interval as needed
   }
 
