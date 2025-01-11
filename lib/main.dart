@@ -19,6 +19,7 @@ import 'package:window_manager/window_manager.dart';
 import 'app/config/firebase_api.dart';
 import 'app/responisve/layout_utils.dart';
 import 'app/route/app_routing.dart';
+import 'app/utils/firebase_message_service.dart';
 import 'firebase_options.dart';
 
 void main() async {
@@ -28,6 +29,9 @@ void main() async {
     options: DefaultFirebaseOptions.currentPlatform,
   );
 
+  if(!kIsWeb && defaultTargetPlatform == TargetPlatform.android){
+    await FirebaseMessageService.initNotificaiton();
+  }
 
   if (!kIsWeb) {
     if (defaultTargetPlatform == TargetPlatform.windows) {

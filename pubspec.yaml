@@ -44,6 +44,8 @@ dependencies:
       path: packages/firebase_auth/firebase_auth
       ref: e9d297c534c24d665e7c2ac3472b87bcc863ed5c
   firebase_database: ^11.2.0
+  firebase_messaging: ^15.2.0
+  firebase_app_installations: ^0.3.2
   flutter_screenutil: ^5.9.3
   flutter_launcher_icons: ^0.14.1
   firebase_analytics: ^11.3.2

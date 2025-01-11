@@ -36,23 +36,25 @@ class _CameraStreamWebState extends State<CameraStreamWeb> {
         body: SafeArea(
             child: Column(children: <Widget>[
       Expanded(
-        child: SizedBox(
+        child: Center(
+          child: SizedBox(
             width: 800.w,
             height: 700.h,
-          child: PlatformWebViewWidget(
-            PlatformWebViewWidgetCreationParams(controller: _controller),
-          ).build(context),
+            child: PlatformWebViewWidget(
+              PlatformWebViewWidgetCreationParams(controller: _controller),
+            ).build(context),
+          ),
         ),
       ),
-      MicrophoneButton(
-        isMicrophoneActive: isMicrophoneActive,
-        onPressed: () {
-          setState(() {
-            isMicrophoneActive = !isMicrophoneActive;
-          });
-          // Add microphone handling logic here
-        },
-      )
+      // MicrophoneButton(
+      //   isMicrophoneActive: isMicrophoneActive,
+      //   onPressed: () {
+      //     setState(() {
+      //       isMicrophoneActive = !isMicrophoneActive;
+      //     });
+      //     // Add microphone handling logic here
+      //   },
+      // )
     ])));
   }
 }

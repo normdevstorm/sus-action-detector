@@ -83,28 +83,30 @@ class _CameraStreamDesktopState extends State<CameraStreamDesktop> {
       children: [
         Expanded(
           flex: 6,
-          child: Container(
-            decoration: BoxDecoration(
-              color: Colors.black,
-              border: Border.all(color: Colors.white),
-              borderRadius: BorderRadius.circular(10.r),
-            ),
-            width: 800.w,
-            height: 700.h,
-            child: Webview(
-              width: MediaQuery.of(context).size.width * 0.7,
-              _windowWebviewController,
+          child: Center(
+            child: Container(
+              decoration: BoxDecoration(
+                color: Colors.black,
+                border: Border.all(color: Colors.white),
+                borderRadius: BorderRadius.circular(10.r),
+              ),
+              width: 800.w,
+              height: 700.h,
+              child: Webview(
+                width: MediaQuery.of(context).size.width * 0.7,
+                _windowWebviewController,
+              ),
             ),
           ),
         ),
-        Expanded(
-          flex: 1,
-          child: Center(
-              child: MicrophoneButton(
-            isMicrophoneActive: _isMicrophoneActive,
-            onPressed: _handleMicrophone,
-          )),
-        ),
+        // Expanded(
+        //   flex: 1,
+        //   child: Center(
+        //       child: MicrophoneButton(
+        //     isMicrophoneActive: _isMicrophoneActive,
+        //     onPressed: _handleMicrophone,
+        //   )),
+        // ),
       ],
     );
   }
