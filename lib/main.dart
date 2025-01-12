@@ -29,7 +29,7 @@ void main() async {
     options: DefaultFirebaseOptions.currentPlatform,
   );
 
-  if(!kIsWeb && defaultTargetPlatform == TargetPlatform.android){
+  if(kIsWeb || defaultTargetPlatform == TargetPlatform.android){
     await FirebaseMessageService.initNotificaiton();
   }
 

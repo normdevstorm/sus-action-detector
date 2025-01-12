@@ -27,7 +27,9 @@ class LoginMobile extends StatelessWidget {
           if (snapshot.hasData) {
             User? user = snapshot.data;
             if (user != null) {
-              context.goNamed(RouteDefine.homeScreen);
+                WidgetsBinding.instance.addPostFrameCallback((_) {
+                context.goNamed(RouteDefine.homeScreen);
+                });
             }
           }
           return Scaffold(
