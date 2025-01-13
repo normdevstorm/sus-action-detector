@@ -38,11 +38,7 @@ dependencies:
   firebase_core: ^3.9.0
   firebase_storage: ^12.3.7
   cloud_firestore: ^5.6.0
-  firebase_auth:
-    git:
-      url: https://github.com/firebase/flutterfire.git
-      path: packages/firebase_auth/firebase_auth
-      ref: e9d297c534c24d665e7c2ac3472b87bcc863ed5c
+  firebase_auth: ^5.4.0
   firebase_database: ^11.2.0
   firebase_messaging: ^15.2.0
   firebase_app_installations: ^0.3.2

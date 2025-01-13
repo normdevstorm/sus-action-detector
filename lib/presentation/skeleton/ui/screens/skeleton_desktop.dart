@@ -41,10 +41,10 @@ class SkeletonDesktop extends StatelessWidget {
                   isShowingDialog.value = false;
                 });
                 // }
-                warningLevelNotifier.value =
-                    warningLevel ?? WarningLevelEnum.safe;
               });
             }
+                            warningLevelNotifier.value =
+                    warningLevel ?? WarningLevelEnum.safe;
           }
           return Scaffold(
             body: child,

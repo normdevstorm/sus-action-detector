@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:webview_flutter/webview_flutter.dart';
 
 class CameraStreamMobile extends StatefulWidget {
@@ -39,6 +40,16 @@ class _CameraStreamMobileState extends State<CameraStreamMobile> {
                 ),
               ),
             ),
+            IconButton(
+              alignment: Alignment.center,
+              iconSize: 30.r,
+              icon: const Icon(Icons.refresh),
+              onPressed: () {
+                setState(() async {
+                  await _webViewController.reload();
+                });
+              },
+            )
             // Expanded(
             //   flex: 1,
             //   child: Center(

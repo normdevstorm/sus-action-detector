@@ -529,28 +529,27 @@ packages:
   firebase_auth:
     dependency: "direct main"
     description:
-      path: "packages/firebase_auth/firebase_auth"
-      ref: e9d297c534c24d665e7c2ac3472b87bcc863ed5c
-      resolved-ref: e9d297c534c24d665e7c2ac3472b87bcc863ed5c
-      url: "https://github.com/firebase/flutterfire.git"
-    source: git
-    version: "5.3.4"
+      name: firebase_auth
+      sha256: "1c2e81c4d4b56f63cb6cefea0560aa5a504457c7a5a601018e6c6d7c07795640"
+      url: "https://pub.dev"
+    source: hosted
+    version: "5.4.0"
   firebase_auth_platform_interface:
     dependency: transitive
     description:
       name: firebase_auth_platform_interface
-      sha256: "3e1409f48c48930635705b1237ebbdee8c54c19106a0a4fb321dbb4b642820c4"
+      sha256: "973899f5be76d37312a07e366033b7f3f262dc51ec70ceae2a3592993289717a"
       url: "https://pub.dev"
     source: hosted
-    version: "7.4.10"
+    version: "7.5.0"
   firebase_auth_web:
     dependency: transitive
     description:
       name: firebase_auth_web
-      sha256: d83fe95c44d73c9c29b006ac7df3aa5e1b8ce92b62edc44e8f86250951fe2cd0
+      sha256: "960f7cc50ecb977a721165166aae90e86302f1370549457f78cbcea5be7f2cb2"
       url: "https://pub.dev"
     source: hosted
-    version: "5.13.5"
+    version: "5.13.6"
   firebase_core:
     dependency: "direct main"
     description:

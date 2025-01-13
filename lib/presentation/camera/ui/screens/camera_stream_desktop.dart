@@ -107,6 +107,18 @@ class _CameraStreamDesktopState extends State<CameraStreamDesktop> {
         //     onPressed: _handleMicrophone,
         //   )),
         // ),
+        IconButton(
+          alignment: Alignment.center,
+          iconSize: 35.r,
+          icon: const Icon(Icons.refresh),
+          onPressed: () {
+            setState(()  {
+                WidgetsBinding.instance.addPostFrameCallback((_) async {
+                await _windowWebviewController.loadUrl(widget.url);
+                });
+            });
+          },
+        )
       ],
     );
   }

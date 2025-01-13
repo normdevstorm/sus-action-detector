@@ -34,27 +34,44 @@ class _CameraStreamWebState extends State<CameraStreamWeb> {
   Widget build(BuildContext context) {
     return Scaffold(
         body: SafeArea(
-            child: Column(children: <Widget>[
-      Expanded(
-        child: Center(
-          child: SizedBox(
-            width: 800.w,
-            height: 700.h,
-            child: PlatformWebViewWidget(
-              PlatformWebViewWidgetCreationParams(controller: _controller),
-            ).build(context),
+            child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: <Widget>[
+          Expanded(
+            child: Center(
+              child: SizedBox(
+                width: 800.w,
+                height: 700.h,
+                child: PlatformWebViewWidget(
+                  PlatformWebViewWidgetCreationParams(controller: _controller),
+                ).build(context),
+              ),
+            ),
           ),
-        ),
-      ),
-      // MicrophoneButton(
-      //   isMicrophoneActive: isMicrophoneActive,
-      //   onPressed: () {
-      //     setState(() {
-      //       isMicrophoneActive = !isMicrophoneActive;
-      //     });
-      //     // Add microphone handling logic here
-      //   },
-      // )
-    ])));
+          // MicrophoneButton(
+          //   isMicrophoneActive: isMicrophoneActive,
+          //   onPressed: () {
+          //     setState(() {
+          //       isMicrophoneActive = !isMicrophoneActive;
+          //     });
+          //     // Add microphone handling logic here
+          //   },
+          // )
+          IconButton(
+            alignment: Alignment.center,
+            iconSize: 35.r,
+            icon: const Icon(Icons.refresh),
+            onPressed: () {
+              setState(() async {
+                await _controller.loadRequest(
+                  LoadRequestParams(
+                    method: LoadRequestMethod.get,
+                    uri: Uri.parse(widget.streamUrl),
+                  ),
+                );
+              });
+            },
+          )
+        ])));
   }
 }
