@@ -92,7 +92,7 @@ class FeatureBox extends StatelessWidget {
                   const SizedBox(height: 8),
                   Text(data, style: TextStyle(color: color, fontSize: 16)),
                   const SizedBox(height: 8),
-                  if ([IotRTDBVariableType.door, IotRTDBVariableType.bell]
+                  if ([IotRTDBVariableType.door]
                       .contains(type))
                     CupertinoSwitch(
                       value: (snapshot.data is bool) ? snapshot.data : false,
