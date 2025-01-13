@@ -75,7 +75,7 @@ class FeatureBox extends StatelessWidget {
                     ],
                   ),
                 ),
-                if ([IotRTDBVariableType.door, IotRTDBVariableType.bell].contains(type))
+                if ([IotRTDBVariableType.door].contains(type))
                   CupertinoSwitch(
                     value: (snapshot.data is bool) ? snapshot.data : false,
                     onChanged: (value) {
